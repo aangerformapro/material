@@ -1,18 +1,26 @@
 <?php declare(strict_types=1);
+use Symfony\Component\DomCrawler\Crawler;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$c   = file_get_contents('sprite.svg');
+$c       = file_get_contents('sprite.svg');
+$ids     = [];
 
-// $e = base64_encode($c);
+$crawler = new Crawler($c);
 
-$dom = new DOMDocument();
+foreach ($crawler->filter('symbol[id]') as $elem)
+{
+    $id       = $elem->getAttribute('id');
 
-$dom->loadXML($c);
+    $ids[$id] = $id;
+}
 
-var_dump($dom);
+// var_dump($crawler->filter('symbol[id]')->first()->extract(['id']));
+var_dump($ids);
 
 exit;
+
+$e       = base64_encode($c);
 ob_start(); ?>
 
 /**

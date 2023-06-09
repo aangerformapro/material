@@ -1,0 +1,284 @@
+{
+    "items": [
+        {
+            "id": "ng-app-shortcut",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-app-shortcut\"></use></svg>"
+        },
+        {
+            "id": "ng-arrow-drop-down",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-arrow-drop-down\"></use></svg>"
+        },
+        {
+            "id": "ng-arrow-selector-tool",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-arrow-selector-tool\"></use></svg>"
+        },
+        {
+            "id": "ng-backspace",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-backspace\"></use></svg>"
+        },
+        {
+            "id": "ng-bookmark",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-bookmark\"></use></svg>"
+        },
+        {
+            "id": "ng-bookmark-add",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-bookmark-add\"></use></svg>"
+        },
+        {
+            "id": "ng-bookmark-added",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-bookmark-added\"></use></svg>"
+        },
+        {
+            "id": "ng-bookmark-remove",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-bookmark-remove\"></use></svg>"
+        },
+        {
+            "id": "ng-bookmarks",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-bookmarks\"></use></svg>"
+        },
+        {
+            "id": "ng-cancel",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-cancel\"></use></svg>"
+        },
+        {
+            "id": "ng-check-box",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-check-box\"></use></svg>"
+        },
+        {
+            "id": "ng-check-box-outline-blank",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-check-box-outline-blank\"></use></svg>"
+        },
+        {
+            "id": "ng-check-circle",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-check-circle\"></use></svg>"
+        },
+        {
+            "id": "ng-chevron-left",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-chevron-left\"></use></svg>"
+        },
+        {
+            "id": "ng-chevron-right",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-chevron-right\"></use></svg>"
+        },
+        {
+            "id": "ng-close",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-close\"></use></svg>"
+        },
+        {
+            "id": "ng-disabled-by-default",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-disabled-by-default\"></use></svg>"
+        },
+        {
+            "id": "ng-dock-to-bottom",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-dock-to-bottom\"></use></svg>"
+        },
+        {
+            "id": "ng-dock-to-left",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-dock-to-left\"></use></svg>"
+        },
+        {
+            "id": "ng-dock-to-right",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-dock-to-right\"></use></svg>"
+        },
+        {
+            "id": "ng-drag-pan",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-drag-pan\"></use></svg>"
+        },
+        {
+            "id": "ng-expand-less",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-expand-less\"></use></svg>"
+        },
+        {
+            "id": "ng-expand-more",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-expand-more\"></use></svg>"
+        },
+        {
+            "id": "ng-favorite",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-favorite\"></use></svg>"
+        },
+        {
+            "id": "ng-filter-list",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-filter-list\"></use></svg>"
+        },
+        {
+            "id": "ng-fullscreen",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-fullscreen\"></use></svg>"
+        },
+        {
+            "id": "ng-fullscreen-exit",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-fullscreen-exit\"></use></svg>"
+        },
+        {
+            "id": "ng-heart-minus",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-heart-minus\"></use></svg>"
+        },
+        {
+            "id": "ng-heart-plus",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-heart-plus\"></use></svg>"
+        },
+        {
+            "id": "ng-history-toggle-off",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-history-toggle-off\"></use></svg>"
+        },
+        {
+            "id": "ng-home",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-home\"></use></svg>"
+        },
+        {
+            "id": "ng-indeterminate-check-box",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-indeterminate-check-box\"></use></svg>"
+        },
+        {
+            "id": "ng-install-mobile",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-install-mobile\"></use></svg>"
+        },
+        {
+            "id": "ng-login",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-login\"></use></svg>"
+        },
+        {
+            "id": "ng-logout",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-logout\"></use></svg>"
+        },
+        {
+            "id": "ng-mic",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-mic\"></use></svg>"
+        },
+        {
+            "id": "ng-mic-off",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-mic-off\"></use></svg>"
+        },
+        {
+            "id": "ng-mouse",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-mouse\"></use></svg>"
+        },
+        {
+            "id": "ng-movie",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-movie\"></use></svg>"
+        },
+        {
+            "id": "ng-movie-info",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-movie-info\"></use></svg>"
+        },
+        {
+            "id": "no-sound",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#no-sound\"></use></svg>"
+        },
+        {
+            "id": "notifications",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#notifications\"></use></svg>"
+        },
+        {
+            "id": "notifications-active",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#notifications-active\"></use></svg>"
+        },
+        {
+            "id": "notifications-off",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#notifications-off\"></use></svg>"
+        },
+        {
+            "id": "ng-page-info",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-page-info\"></use></svg>"
+        },
+        {
+            "id": "ng-password",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-password\"></use></svg>"
+        },
+        {
+            "id": "ng-power-settings-new",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-power-settings-new\"></use></svg>"
+        },
+        {
+            "id": "ng-radio-button-checked",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-radio-button-checked\"></use></svg>"
+        },
+        {
+            "id": "ng-radio-button-unchecked",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-radio-button-unchecked\"></use></svg>"
+        },
+        {
+            "id": "ng-refresh",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-refresh\"></use></svg>"
+        },
+        {
+            "id": "ng-search",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-search\"></use></svg>"
+        },
+        {
+            "id": "ng-select-check-box",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-select-check-box\"></use></svg>"
+        },
+        {
+            "id": "ng-settings",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-settings\"></use></svg>"
+        },
+        {
+            "id": "ng-shelf-position",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-shelf-position\"></use></svg>"
+        },
+        {
+            "id": "ng-sort",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-sort\"></use></svg>"
+        },
+        {
+            "id": "ng-star",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-star\"></use></svg>"
+        },
+        {
+            "id": "ng-thumb-down",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-thumb-down\"></use></svg>"
+        },
+        {
+            "id": "ng-thumb-up",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-thumb-up\"></use></svg>"
+        },
+        {
+            "id": "ng-tips-and-updates",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-tips-and-updates\"></use></svg>"
+        },
+        {
+            "id": "ng-toggle-off",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-toggle-off\"></use></svg>"
+        },
+        {
+            "id": "ng-toggle-on",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-toggle-on\"></use></svg>"
+        },
+        {
+            "id": "ng-toolbar",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-toolbar\"></use></svg>"
+        },
+        {
+            "id": "ng-touchpad-mouse",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-touchpad-mouse\"></use></svg>"
+        },
+        {
+            "id": "ng-tune",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-tune\"></use></svg>"
+        },
+        {
+            "id": "ng-volume-down",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-volume-down\"></use></svg>"
+        },
+        {
+            "id": "ng-volume-mute",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-volume-mute\"></use></svg>"
+        },
+        {
+            "id": "ng-volume-off",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-volume-off\"></use></svg>"
+        },
+        {
+            "id": "ng-volume-up",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-volume-up\"></use></svg>"
+        },
+        {
+            "id": "ng-width-full",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-width-full\"></use></svg>"
+        },
+        {
+            "id": "ng-window",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-window\"></use></svg>"
+        }
+    ]
+}
