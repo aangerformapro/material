@@ -1,41 +1,44 @@
 <?php declare(strict_types=1);
-use Symfony\Component\DomCrawler\Crawler;
 
-require __DIR__ . '/vendor/autoload.php';
+$output = __DIR__ . '/dist/';
+$c      = file_get_contents('sprite.svg');
+$data   = json_decode(file_get_contents('sprite.json'), true);
+$code   = [];
 
-$c       = file_get_contents('sprite.svg');
-$ids     = [];
-
-$crawler = new Crawler($c);
-
-foreach ($crawler->filter('symbol[id]') as $elem)
-{
-    $id       = $elem->getAttribute('id');
-
-    $ids[$id] = $id;
-}
-
-// var_dump($crawler->filter('symbol[id]')->first()->extract(['id']));
-var_dump($ids);
-
-exit;
-
-$e       = base64_encode($c);
 ob_start(); ?>
 
 /**
  * Material Design Custom SVG Sprite
  */
 const parser = document.createElement('div');
-parser.innerHTML = atob(`<?php echo $e; ?>`);
+parser.innerHTML = `<?php echo $c; ?>`;
 
+export const sprite = parser.removeChild(parser.firstChild);
+document.documentElement.appendChild(sprite);
 
-export const svg = parser.removeChild(parser.firstChild);
-svg.style.display = 'none';
-document.documentElement.appendChild(svg);
+<?php include 'template.jss';
 
+echo "const icons = {\n";
 
+foreach ($data['keys'] as $key)
+{
+    $item   = $data['items'][$key];
+    $code[] = sprintf('    %s = new SvgIcon(icons[\'%s\'])', $key, $key);
 
+    echo "    {$key}:{\n";
 
-<?php
-file_put_contents('sprite.js', ob_get_clean());
+    foreach ($item as $index => $value)
+    {
+        printf("        %s: `%s`,\n", $index, $value);
+    }
+
+    echo "    },\n";
+}
+
+echo "};\n";
+
+echo "export const \n" . implode(",\n", $code) . ";\n";
+
+file_put_contents($output . 'sprite.js', ob_get_clean());
+copy('sprite.json', $output . 'sprite.json');
+copy('sprite.svg', $output . 'sprite.svg');
