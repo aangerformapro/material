@@ -1,9 +1,11 @@
 <?php declare(strict_types=1);
 
-$output = __DIR__ . '/dist/';
-$c      = file_get_contents('sprite.svg');
-$data   = json_decode(file_get_contents('sprite.json'), true);
-$code   = [];
+$output      = __DIR__ . '/dist/';
+$c           = file_get_contents('sprite.svg');
+$data        = json_decode(file_get_contents('sprite.json'), true);
+$code        = [];
+
+$defaultCode = [];
 
 ob_start(); ?>
 
@@ -22,9 +24,9 @@ echo "const icons = {\n";
 
 foreach ($data['keys'] as $key)
 {
-    $item   = $data['items'][$key];
-    $code[] = sprintf('    %s = new SvgIcon(icons[\'%s\'])', $key, $key);
-
+    $item          = $data['items'][$key];
+    $code[]        = sprintf('    %s = new SvgIcon(icons[\'%s\'])', $key, $key);
+    $defaultCode[] = "    {$key},";
     echo "    {$key}:{\n";
 
     foreach ($item as $index => $value)
@@ -37,8 +39,11 @@ foreach ($data['keys'] as $key)
 
 echo "};\n";
 
-echo "export const \n" . implode(",\n", $code) . ";\n";
+echo "export const \n" . implode(",\n", $code) . ";\n\n";
+
+echo "export default {\n" . implode("\n", $defaultCode) . "\n};\n";
 
 file_put_contents($output . 'sprite.js', ob_get_clean());
+
 copy('sprite.json', $output . 'sprite.json');
 copy('sprite.svg', $output . 'sprite.svg');
