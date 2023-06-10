@@ -6,8 +6,6 @@ $dir          = __DIR__ . '/svgs/';
 
 $data         = [
     'items' => [],
-    // 'namespaces' => [],
-    // 'ids'   => [],
     'keys'  => [],
 ];
 
@@ -18,6 +16,13 @@ foreach (scandir($dir) as $file)
     if ( ! str_ends_with($file, '.svg'))
     {
         continue;
+    }
+
+    $renamed             = preg_replace('#(?:\-FILL.+)\.svg#', '.svg', $file);
+
+    if ($renamed !== $file && @rename($dir . $file, $dir . $renamed))
+    {
+        $file = $renamed;
     }
 
     $new                 = ! str_starts_with($file, 'ng-') ? 'ng-' . $file : $file;
@@ -47,8 +52,6 @@ foreach (scandir($dir) as $file)
     ];
 
     $data['items'][$key] = $item;
-    // $data['ids'][$key]  = $item;
-    // $data['keys'][$key]  = $key;
 
     if ($new === $file)
     {

@@ -308,6 +308,13 @@ export class SvgIcon
 }
 
 const icons = {
+    done_FILL0_wght400_GRAD0_opsz48:{
+        id: `ng-done-FILL0-wght400-GRAD0-opsz48`,
+        key: `done_FILL0_wght400_GRAD0_opsz48`,
+        namespace: `done`,
+        name: `FILL0-wght400-GRAD0-opsz48`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-done-FILL0-wght400-GRAD0-opsz48"></use></svg>`,
+    },
     app_shortcut:{
         id: `ng-app-shortcut`,
         key: `app_shortcut`,
@@ -793,6 +800,7 @@ const icons = {
     },
 };
 export const 
+    done_FILL0_wght400_GRAD0_opsz48 = new SvgIcon(icons['done_FILL0_wght400_GRAD0_opsz48']),
     app_shortcut = new SvgIcon(icons['app_shortcut']),
     arrow_drop_down = new SvgIcon(icons['arrow_drop_down']),
     arrow_selector_tool = new SvgIcon(icons['arrow_selector_tool']),
@@ -864,6 +872,7 @@ export const
     width_full = new SvgIcon(icons['width_full']);
 
 export default {
+    done_FILL0_wght400_GRAD0_opsz48,
     app_shortcut,
     arrow_drop_down,
     arrow_selector_tool,

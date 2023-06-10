@@ -1,5 +1,12 @@
 {
     "items": {
+        "done_FILL0_wght400_GRAD0_opsz48": {
+            "id": "ng-done-FILL0-wght400-GRAD0-opsz48",
+            "key": "done_FILL0_wght400_GRAD0_opsz48",
+            "namespace": "done",
+            "name": "FILL0-wght400-GRAD0-opsz48",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-done-FILL0-wght400-GRAD0-opsz48\"></use></svg>"
+        },
         "app_shortcut": {
             "id": "ng-app-shortcut",
             "key": "app_shortcut",
@@ -485,6 +492,7 @@
         }
     },
     "keys": [
+        "done_FILL0_wght400_GRAD0_opsz48",
         "app_shortcut",
         "arrow_drop_down",
         "arrow_selector_tool",

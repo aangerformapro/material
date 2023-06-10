@@ -140,6 +140,13 @@
             "name": "to-right",
             "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-dock-to-right\"></use></svg>"
         },
+        "done": {
+            "id": "ng-done",
+            "key": "done",
+            "namespace": null,
+            "name": "done",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-done\"></use></svg>"
+        },
         "drag_pan": {
             "id": "ng-drag-pan",
             "key": "drag_pan",
@@ -505,6 +512,7 @@
         "dock_to_bottom",
         "dock_to_left",
         "dock_to_right",
+        "done",
         "drag_pan",
         "expand_less",
         "expand_more",
