@@ -17,23 +17,23 @@ export class SvgIcon
 
     get id()
     {
-        return this.#item.id;
+        return this.item.id;
     }
     get namespace()
     {
-        return this.#item.namespace;
+        return this.item.namespace;
     }
     get name()
     {
-        return this.#item.name;
+        return this.item.name;
     }
     get code()
     {
-        return this.#item.code;
+        return this.item.code;
     }
     get element()
     {
-        return this.#elem ??= generateSVG(this.code);
+        return this.elem ??= generateSVG(this.code);
     }
     setAttributes(attributes)
     {
@@ -77,15 +77,15 @@ export class SvgIcon
     }
     generate(parent)
     {
-        const instance = new SvgIcon(this.#item);
+        const instance = new SvgIcon(this.item);
         instance.attachTo(parent);
         return instance;
     }
-    #elem;
-    #item;
+    elem;
+    item;
     constructor(item)
     {
-        this.#item = item;
+        this.item = item;
     }
 }
 

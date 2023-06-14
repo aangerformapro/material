@@ -1,4 +1,9 @@
-<svg width="0" height="0" style="display: none;">
+
+/**
+ * Material Design Custom SVG Sprite
+ */
+const parser = document.createElement('div');
+parser.innerHTML = `<svg width="0" height="0" style="display: none;">
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" id="ng-notifications-off">
     <path d="M160-200v-60h84v-315q0-29.598 8.5-58.299T276-688l45 45q-8 17-12.5 33.5T304-575v315h316L75-805l42-42 726 727-42 42-122-122H160Zm557-132-60-60v-174q0-75-50.5-126.5T482-744q-35 0-67 11.5T356-693l-43-43q27-26 54.5-40.5T424-798v-26.091q0-23.295 16.265-39.602Q456.529-880 479.765-880 503-880 519.5-863.693t16.5 39.602V-798q78 17 129.5 82T717-566v234Zm-255-86Zm18 338q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80Zm27-463Z"></path>
   </symbol>
@@ -209,4 +214,735 @@
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" id="ng-notifications-active">
     <path d="M124-567q0-81 34-153.5T255-844l41 45q-53 43-82.5 103.5T184-567h-60Zm653 0q0-68-28-128.5T668-799l41-45q62 52 95 124t33 153h-60ZM160-200v-60h84v-306q0-84 49.5-149.5T424-798v-29q0-23 16.5-38t39.5-15q23 0 39.5 15t16.5 38v29q81 17 131 82.5T717-566v306h83v60H160Zm320-295Zm0 415q-32 0-56-23.5T400-160h160q0 33-23.5 56.5T480-80ZM304-260h353v-306q0-74-51-126t-125-52q-74 0-125.5 52T304-566v306Z"></path>
   </symbol>
-</svg>
+</svg>`;
+
+export const sprite = parser.removeChild(parser.firstChild);
+document.documentElement.appendChild(sprite);
+
+
+
+function generateSVG(code)
+{
+    parser.innerHTML = code;
+    return parser.removeChild(parser.firstChild);
+}
+
+
+function isElement(elem)
+{
+    return elem instanceof Object && elem.querySelector;
+}
+
+export class SvgIcon
+{
+
+    get id()
+    {
+        return this.#item.id;
+    }
+    get namespace()
+    {
+        return this.#item.namespace;
+    }
+    get name()
+    {
+        return this.#item.name;
+    }
+    get code()
+    {
+        return this.#item.code;
+    }
+    get element()
+    {
+        return this.#elem ??= generateSVG(this.code);
+    }
+    setAttributes(attributes)
+    {
+        if (typeof attributes === 'object' && !Array.isArray(attributes) && attributes !== null)
+        {
+            const { element } = this;
+            for (let attr in attributes)
+            {
+                element.setAttribute(attr, attributes[attr]);
+            }
+        }
+    }
+    detach()
+    {
+        this.element.remove();
+    }
+    isAttached()
+    {
+        return this.element.parentElement !== null;
+    }
+    attachTo(parent)
+    {
+        if (isElement(parent))
+        {
+            parent.appendChild(this.element);
+        }
+    }
+    prependTo(parent)
+    {
+        if (isElement(parent))
+        {
+            parent.insertBefore(this.element, parent.firstElementChild);
+        }
+    }
+    insertBefore(sibling)
+    {
+        if (isElement(sibling))
+        {
+            sibling.parentElement?.insertBefore(this.element, sibling);
+        }
+    }
+    generate(parent)
+    {
+        const instance = new SvgIcon(this.#item);
+        instance.attachTo(parent);
+        return instance;
+    }
+    #elem;
+    #item;
+    constructor(item)
+    {
+        this.#item = item;
+    }
+}
+
+const icons = {
+    app_shortcut:{
+        id: `ng-app-shortcut`,
+        key: `app_shortcut`,
+        namespace: `app`,
+        name: `shortcut`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-app-shortcut"></use></svg>`,
+    },
+    arrow_drop_down:{
+        id: `ng-arrow-drop-down`,
+        key: `arrow_drop_down`,
+        namespace: `arrow`,
+        name: `drop-down`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-arrow-drop-down"></use></svg>`,
+    },
+    arrow_selector_tool:{
+        id: `ng-arrow-selector-tool`,
+        key: `arrow_selector_tool`,
+        namespace: `arrow`,
+        name: `selector-tool`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-arrow-selector-tool"></use></svg>`,
+    },
+    backspace:{
+        id: `ng-backspace`,
+        key: `backspace`,
+        namespace: ``,
+        name: `backspace`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-backspace"></use></svg>`,
+    },
+    bookmark_add:{
+        id: `ng-bookmark-add`,
+        key: `bookmark_add`,
+        namespace: `bookmark`,
+        name: `add`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-bookmark-add"></use></svg>`,
+    },
+    bookmark_added:{
+        id: `ng-bookmark-added`,
+        key: `bookmark_added`,
+        namespace: `bookmark`,
+        name: `added`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-bookmark-added"></use></svg>`,
+    },
+    bookmark_remove:{
+        id: `ng-bookmark-remove`,
+        key: `bookmark_remove`,
+        namespace: `bookmark`,
+        name: `remove`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-bookmark-remove"></use></svg>`,
+    },
+    bookmark:{
+        id: `ng-bookmark`,
+        key: `bookmark`,
+        namespace: ``,
+        name: `bookmark`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-bookmark"></use></svg>`,
+    },
+    bookmarks:{
+        id: `ng-bookmarks`,
+        key: `bookmarks`,
+        namespace: ``,
+        name: `bookmarks`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-bookmarks"></use></svg>`,
+    },
+    cancel:{
+        id: `ng-cancel`,
+        key: `cancel`,
+        namespace: ``,
+        name: `cancel`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-cancel"></use></svg>`,
+    },
+    check_box_outline_blank:{
+        id: `ng-check-box-outline-blank`,
+        key: `check_box_outline_blank`,
+        namespace: `check`,
+        name: `box-outline-blank`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-check-box-outline-blank"></use></svg>`,
+    },
+    check_box:{
+        id: `ng-check-box`,
+        key: `check_box`,
+        namespace: `check`,
+        name: `box`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-check-box"></use></svg>`,
+    },
+    check_circle:{
+        id: `ng-check-circle`,
+        key: `check_circle`,
+        namespace: `check`,
+        name: `circle`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-check-circle"></use></svg>`,
+    },
+    chevron_left:{
+        id: `ng-chevron-left`,
+        key: `chevron_left`,
+        namespace: `chevron`,
+        name: `left`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-chevron-left"></use></svg>`,
+    },
+    chevron_right:{
+        id: `ng-chevron-right`,
+        key: `chevron_right`,
+        namespace: `chevron`,
+        name: `right`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-chevron-right"></use></svg>`,
+    },
+    close:{
+        id: `ng-close`,
+        key: `close`,
+        namespace: ``,
+        name: `close`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-close"></use></svg>`,
+    },
+    disabled_by_default:{
+        id: `ng-disabled-by-default`,
+        key: `disabled_by_default`,
+        namespace: `disabled`,
+        name: `by-default`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-disabled-by-default"></use></svg>`,
+    },
+    dock_to_bottom:{
+        id: `ng-dock-to-bottom`,
+        key: `dock_to_bottom`,
+        namespace: `dock`,
+        name: `to-bottom`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-dock-to-bottom"></use></svg>`,
+    },
+    dock_to_left:{
+        id: `ng-dock-to-left`,
+        key: `dock_to_left`,
+        namespace: `dock`,
+        name: `to-left`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-dock-to-left"></use></svg>`,
+    },
+    dock_to_right:{
+        id: `ng-dock-to-right`,
+        key: `dock_to_right`,
+        namespace: `dock`,
+        name: `to-right`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-dock-to-right"></use></svg>`,
+    },
+    done:{
+        id: `ng-done`,
+        key: `done`,
+        namespace: ``,
+        name: `done`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-done"></use></svg>`,
+    },
+    drag_pan:{
+        id: `ng-drag-pan`,
+        key: `drag_pan`,
+        namespace: `drag`,
+        name: `pan`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-drag-pan"></use></svg>`,
+    },
+    expand_less:{
+        id: `ng-expand-less`,
+        key: `expand_less`,
+        namespace: `expand`,
+        name: `less`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-expand-less"></use></svg>`,
+    },
+    expand_more:{
+        id: `ng-expand-more`,
+        key: `expand_more`,
+        namespace: `expand`,
+        name: `more`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-expand-more"></use></svg>`,
+    },
+    favorite:{
+        id: `ng-favorite`,
+        key: `favorite`,
+        namespace: ``,
+        name: `favorite`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-favorite"></use></svg>`,
+    },
+    filter_list:{
+        id: `ng-filter-list`,
+        key: `filter_list`,
+        namespace: `filter`,
+        name: `list`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-filter-list"></use></svg>`,
+    },
+    fullscreen_exit:{
+        id: `ng-fullscreen-exit`,
+        key: `fullscreen_exit`,
+        namespace: `fullscreen`,
+        name: `exit`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-fullscreen-exit"></use></svg>`,
+    },
+    fullscreen:{
+        id: `ng-fullscreen`,
+        key: `fullscreen`,
+        namespace: ``,
+        name: `fullscreen`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-fullscreen"></use></svg>`,
+    },
+    heart_minus:{
+        id: `ng-heart-minus`,
+        key: `heart_minus`,
+        namespace: `heart`,
+        name: `minus`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-heart-minus"></use></svg>`,
+    },
+    heart_plus:{
+        id: `ng-heart-plus`,
+        key: `heart_plus`,
+        namespace: `heart`,
+        name: `plus`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-heart-plus"></use></svg>`,
+    },
+    history_toggle_off:{
+        id: `ng-history-toggle-off`,
+        key: `history_toggle_off`,
+        namespace: `history`,
+        name: `toggle-off`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-history-toggle-off"></use></svg>`,
+    },
+    home:{
+        id: `ng-home`,
+        key: `home`,
+        namespace: ``,
+        name: `home`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-home"></use></svg>`,
+    },
+    indeterminate_check_box:{
+        id: `ng-indeterminate-check-box`,
+        key: `indeterminate_check_box`,
+        namespace: `indeterminate`,
+        name: `check-box`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-indeterminate-check-box"></use></svg>`,
+    },
+    install_mobile:{
+        id: `ng-install-mobile`,
+        key: `install_mobile`,
+        namespace: `install`,
+        name: `mobile`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-install-mobile"></use></svg>`,
+    },
+    login:{
+        id: `ng-login`,
+        key: `login`,
+        namespace: ``,
+        name: `login`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-login"></use></svg>`,
+    },
+    logout:{
+        id: `ng-logout`,
+        key: `logout`,
+        namespace: ``,
+        name: `logout`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-logout"></use></svg>`,
+    },
+    mic_off:{
+        id: `ng-mic-off`,
+        key: `mic_off`,
+        namespace: `mic`,
+        name: `off`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-mic-off"></use></svg>`,
+    },
+    mic:{
+        id: `ng-mic`,
+        key: `mic`,
+        namespace: ``,
+        name: `mic`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-mic"></use></svg>`,
+    },
+    mouse:{
+        id: `ng-mouse`,
+        key: `mouse`,
+        namespace: ``,
+        name: `mouse`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-mouse"></use></svg>`,
+    },
+    movie_info:{
+        id: `ng-movie-info`,
+        key: `movie_info`,
+        namespace: `movie`,
+        name: `info`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-movie-info"></use></svg>`,
+    },
+    movie:{
+        id: `ng-movie`,
+        key: `movie`,
+        namespace: ``,
+        name: `movie`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-movie"></use></svg>`,
+    },
+    no_sound:{
+        id: `ng-no-sound`,
+        key: `no_sound`,
+        namespace: `no`,
+        name: `sound`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-no-sound"></use></svg>`,
+    },
+    notifications_active:{
+        id: `ng-notifications-active`,
+        key: `notifications_active`,
+        namespace: `notifications`,
+        name: `active`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-notifications-active"></use></svg>`,
+    },
+    notifications_off:{
+        id: `ng-notifications-off`,
+        key: `notifications_off`,
+        namespace: `notifications`,
+        name: `off`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-notifications-off"></use></svg>`,
+    },
+    notifications:{
+        id: `ng-notifications`,
+        key: `notifications`,
+        namespace: ``,
+        name: `notifications`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-notifications"></use></svg>`,
+    },
+    page_info:{
+        id: `ng-page-info`,
+        key: `page_info`,
+        namespace: `page`,
+        name: `info`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-page-info"></use></svg>`,
+    },
+    password:{
+        id: `ng-password`,
+        key: `password`,
+        namespace: ``,
+        name: `password`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-password"></use></svg>`,
+    },
+    power_settings_new:{
+        id: `ng-power-settings-new`,
+        key: `power_settings_new`,
+        namespace: `power`,
+        name: `settings-new`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-power-settings-new"></use></svg>`,
+    },
+    radio_button_checked:{
+        id: `ng-radio-button-checked`,
+        key: `radio_button_checked`,
+        namespace: `radio`,
+        name: `button-checked`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-radio-button-checked"></use></svg>`,
+    },
+    radio_button_unchecked:{
+        id: `ng-radio-button-unchecked`,
+        key: `radio_button_unchecked`,
+        namespace: `radio`,
+        name: `button-unchecked`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-radio-button-unchecked"></use></svg>`,
+    },
+    refresh:{
+        id: `ng-refresh`,
+        key: `refresh`,
+        namespace: ``,
+        name: `refresh`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-refresh"></use></svg>`,
+    },
+    search:{
+        id: `ng-search`,
+        key: `search`,
+        namespace: ``,
+        name: `search`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-search"></use></svg>`,
+    },
+    select_check_box:{
+        id: `ng-select-check-box`,
+        key: `select_check_box`,
+        namespace: `select`,
+        name: `check-box`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-select-check-box"></use></svg>`,
+    },
+    settings:{
+        id: `ng-settings`,
+        key: `settings`,
+        namespace: ``,
+        name: `settings`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-settings"></use></svg>`,
+    },
+    shelf_position:{
+        id: `ng-shelf-position`,
+        key: `shelf_position`,
+        namespace: `shelf`,
+        name: `position`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-shelf-position"></use></svg>`,
+    },
+    sort:{
+        id: `ng-sort`,
+        key: `sort`,
+        namespace: ``,
+        name: `sort`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-sort"></use></svg>`,
+    },
+    star:{
+        id: `ng-star`,
+        key: `star`,
+        namespace: ``,
+        name: `star`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-star"></use></svg>`,
+    },
+    thumb_down:{
+        id: `ng-thumb-down`,
+        key: `thumb_down`,
+        namespace: `thumb`,
+        name: `down`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-thumb-down"></use></svg>`,
+    },
+    thumb_up:{
+        id: `ng-thumb-up`,
+        key: `thumb_up`,
+        namespace: `thumb`,
+        name: `up`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-thumb-up"></use></svg>`,
+    },
+    tips_and_updates:{
+        id: `ng-tips-and-updates`,
+        key: `tips_and_updates`,
+        namespace: `tips`,
+        name: `and-updates`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-tips-and-updates"></use></svg>`,
+    },
+    toggle_off:{
+        id: `ng-toggle-off`,
+        key: `toggle_off`,
+        namespace: `toggle`,
+        name: `off`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-toggle-off"></use></svg>`,
+    },
+    toggle_on:{
+        id: `ng-toggle-on`,
+        key: `toggle_on`,
+        namespace: `toggle`,
+        name: `on`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-toggle-on"></use></svg>`,
+    },
+    toolbar:{
+        id: `ng-toolbar`,
+        key: `toolbar`,
+        namespace: ``,
+        name: `toolbar`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-toolbar"></use></svg>`,
+    },
+    touchpad_mouse:{
+        id: `ng-touchpad-mouse`,
+        key: `touchpad_mouse`,
+        namespace: `touchpad`,
+        name: `mouse`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-touchpad-mouse"></use></svg>`,
+    },
+    tune:{
+        id: `ng-tune`,
+        key: `tune`,
+        namespace: ``,
+        name: `tune`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-tune"></use></svg>`,
+    },
+    volume_down:{
+        id: `ng-volume-down`,
+        key: `volume_down`,
+        namespace: `volume`,
+        name: `down`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-volume-down"></use></svg>`,
+    },
+    volume_mute:{
+        id: `ng-volume-mute`,
+        key: `volume_mute`,
+        namespace: `volume`,
+        name: `mute`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-volume-mute"></use></svg>`,
+    },
+    volume_off:{
+        id: `ng-volume-off`,
+        key: `volume_off`,
+        namespace: `volume`,
+        name: `off`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-volume-off"></use></svg>`,
+    },
+    volume_up:{
+        id: `ng-volume-up`,
+        key: `volume_up`,
+        namespace: `volume`,
+        name: `up`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-volume-up"></use></svg>`,
+    },
+    width_full:{
+        id: `ng-width-full`,
+        key: `width_full`,
+        namespace: `width`,
+        name: `full`,
+        code: `<svg fill="currentColor" class="ng-svg-icon"><use xlink:href="#ng-width-full"></use></svg>`,
+    },
+};
+export const 
+    app_shortcut = new SvgIcon(icons['app_shortcut']),
+    arrow_drop_down = new SvgIcon(icons['arrow_drop_down']),
+    arrow_selector_tool = new SvgIcon(icons['arrow_selector_tool']),
+    backspace = new SvgIcon(icons['backspace']),
+    bookmark_add = new SvgIcon(icons['bookmark_add']),
+    bookmark_added = new SvgIcon(icons['bookmark_added']),
+    bookmark_remove = new SvgIcon(icons['bookmark_remove']),
+    bookmark = new SvgIcon(icons['bookmark']),
+    bookmarks = new SvgIcon(icons['bookmarks']),
+    cancel = new SvgIcon(icons['cancel']),
+    check_box_outline_blank = new SvgIcon(icons['check_box_outline_blank']),
+    check_box = new SvgIcon(icons['check_box']),
+    check_circle = new SvgIcon(icons['check_circle']),
+    chevron_left = new SvgIcon(icons['chevron_left']),
+    chevron_right = new SvgIcon(icons['chevron_right']),
+    close = new SvgIcon(icons['close']),
+    disabled_by_default = new SvgIcon(icons['disabled_by_default']),
+    dock_to_bottom = new SvgIcon(icons['dock_to_bottom']),
+    dock_to_left = new SvgIcon(icons['dock_to_left']),
+    dock_to_right = new SvgIcon(icons['dock_to_right']),
+    done = new SvgIcon(icons['done']),
+    drag_pan = new SvgIcon(icons['drag_pan']),
+    expand_less = new SvgIcon(icons['expand_less']),
+    expand_more = new SvgIcon(icons['expand_more']),
+    favorite = new SvgIcon(icons['favorite']),
+    filter_list = new SvgIcon(icons['filter_list']),
+    fullscreen_exit = new SvgIcon(icons['fullscreen_exit']),
+    fullscreen = new SvgIcon(icons['fullscreen']),
+    heart_minus = new SvgIcon(icons['heart_minus']),
+    heart_plus = new SvgIcon(icons['heart_plus']),
+    history_toggle_off = new SvgIcon(icons['history_toggle_off']),
+    home = new SvgIcon(icons['home']),
+    indeterminate_check_box = new SvgIcon(icons['indeterminate_check_box']),
+    install_mobile = new SvgIcon(icons['install_mobile']),
+    login = new SvgIcon(icons['login']),
+    logout = new SvgIcon(icons['logout']),
+    mic_off = new SvgIcon(icons['mic_off']),
+    mic = new SvgIcon(icons['mic']),
+    mouse = new SvgIcon(icons['mouse']),
+    movie_info = new SvgIcon(icons['movie_info']),
+    movie = new SvgIcon(icons['movie']),
+    no_sound = new SvgIcon(icons['no_sound']),
+    notifications_active = new SvgIcon(icons['notifications_active']),
+    notifications_off = new SvgIcon(icons['notifications_off']),
+    notifications = new SvgIcon(icons['notifications']),
+    page_info = new SvgIcon(icons['page_info']),
+    password = new SvgIcon(icons['password']),
+    power_settings_new = new SvgIcon(icons['power_settings_new']),
+    radio_button_checked = new SvgIcon(icons['radio_button_checked']),
+    radio_button_unchecked = new SvgIcon(icons['radio_button_unchecked']),
+    refresh = new SvgIcon(icons['refresh']),
+    search = new SvgIcon(icons['search']),
+    select_check_box = new SvgIcon(icons['select_check_box']),
+    settings = new SvgIcon(icons['settings']),
+    shelf_position = new SvgIcon(icons['shelf_position']),
+    sort = new SvgIcon(icons['sort']),
+    star = new SvgIcon(icons['star']),
+    thumb_down = new SvgIcon(icons['thumb_down']),
+    thumb_up = new SvgIcon(icons['thumb_up']),
+    tips_and_updates = new SvgIcon(icons['tips_and_updates']),
+    toggle_off = new SvgIcon(icons['toggle_off']),
+    toggle_on = new SvgIcon(icons['toggle_on']),
+    toolbar = new SvgIcon(icons['toolbar']),
+    touchpad_mouse = new SvgIcon(icons['touchpad_mouse']),
+    tune = new SvgIcon(icons['tune']),
+    volume_down = new SvgIcon(icons['volume_down']),
+    volume_mute = new SvgIcon(icons['volume_mute']),
+    volume_off = new SvgIcon(icons['volume_off']),
+    volume_up = new SvgIcon(icons['volume_up']),
+    width_full = new SvgIcon(icons['width_full']);
+
+export default {
+    app_shortcut,
+    arrow_drop_down,
+    arrow_selector_tool,
+    backspace,
+    bookmark_add,
+    bookmark_added,
+    bookmark_remove,
+    bookmark,
+    bookmarks,
+    cancel,
+    check_box_outline_blank,
+    check_box,
+    check_circle,
+    chevron_left,
+    chevron_right,
+    close,
+    disabled_by_default,
+    dock_to_bottom,
+    dock_to_left,
+    dock_to_right,
+    done,
+    drag_pan,
+    expand_less,
+    expand_more,
+    favorite,
+    filter_list,
+    fullscreen_exit,
+    fullscreen,
+    heart_minus,
+    heart_plus,
+    history_toggle_off,
+    home,
+    indeterminate_check_box,
+    install_mobile,
+    login,
+    logout,
+    mic_off,
+    mic,
+    mouse,
+    movie_info,
+    movie,
+    no_sound,
+    notifications_active,
+    notifications_off,
+    notifications,
+    page_info,
+    password,
+    power_settings_new,
+    radio_button_checked,
+    radio_button_unchecked,
+    refresh,
+    search,
+    select_check_box,
+    settings,
+    shelf_position,
+    sort,
+    star,
+    thumb_down,
+    thumb_up,
+    tips_and_updates,
+    toggle_off,
+    toggle_on,
+    toolbar,
+    touchpad_mouse,
+    tune,
+    volume_down,
+    volume_mute,
+    volume_off,
+    volume_up,
+    width_full,
+};

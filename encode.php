@@ -43,7 +43,10 @@ echo "export const \n" . implode(",\n", $code) . ";\n\n";
 
 echo "export default {\n" . implode("\n", $defaultCode) . "\n};\n";
 
-file_put_contents($output . 'sprite.js', ob_get_clean());
+$contents    = ob_get_clean();
+
+file_put_contents($output . 'sprite.js', $contents);
+file_put_contents($output . 'sprite.mjs', $contents);
 
 copy('sprite.json', $output . 'sprite.json');
 copy('sprite.svg', $output . 'sprite.svg');

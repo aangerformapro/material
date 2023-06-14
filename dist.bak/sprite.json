@@ -1,12 +1,5 @@
 {
     "items": {
-        "done_FILL0_wght400_GRAD0_opsz48": {
-            "id": "ng-done-FILL0-wght400-GRAD0-opsz48",
-            "key": "done_FILL0_wght400_GRAD0_opsz48",
-            "namespace": "done",
-            "name": "FILL0-wght400-GRAD0-opsz48",
-            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-done-FILL0-wght400-GRAD0-opsz48\"></use></svg>"
-        },
         "app_shortcut": {
             "id": "ng-app-shortcut",
             "key": "app_shortcut",
@@ -146,6 +139,13 @@
             "namespace": "dock",
             "name": "to-right",
             "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-dock-to-right\"></use></svg>"
+        },
+        "done": {
+            "id": "ng-done",
+            "key": "done",
+            "namespace": null,
+            "name": "done",
+            "code": "<svg fill=\"currentColor\" class=\"ng-svg-icon\"><use xlink:href=\"#ng-done\"></use></svg>"
         },
         "drag_pan": {
             "id": "ng-drag-pan",
@@ -492,7 +492,6 @@
         }
     },
     "keys": [
-        "done_FILL0_wght400_GRAD0_opsz48",
         "app_shortcut",
         "arrow_drop_down",
         "arrow_selector_tool",
@@ -513,6 +512,7 @@
         "dock_to_bottom",
         "dock_to_left",
         "dock_to_right",
+        "done",
         "drag_pan",
         "expand_less",
         "expand_more",

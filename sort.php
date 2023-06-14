@@ -1,4 +1,7 @@
 <?php
+/**
+ * @see https://svgsprit.es/ to generate sprite using folder
+ */
 
 declare(strict_types=1);
 
