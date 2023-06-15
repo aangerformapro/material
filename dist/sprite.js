@@ -54,6 +54,8 @@ function loadSprite(id)
     }
 }
 
+
+
 // Easy to inject icon class
 class Xlink
 {
@@ -105,6 +107,15 @@ class Xlink
 export function render(){
     return sprite.outerHTML;
 }
+
+
+
+export function loadAll(){
+    for(let id of Object.keys(icons)){
+        loadSprite(id);
+    }
+}
+
 
 // generate xlinks
 export const ng_app_shortcut = new Xlink('ng-app-shortcut');
@@ -177,3 +188,76 @@ export const ng_volume_mute = new Xlink('ng-volume-mute');
 export const ng_volume_off = new Xlink('ng-volume-off');
 export const ng_volume_up = new Xlink('ng-volume-up');
 export const ng_width_full = new Xlink('ng-width-full');
+// generate default export
+export default {
+    ng_app_shortcut,
+    ng_arrow_drop_down,
+    ng_arrow_selector_tool,
+    ng_backspace,
+    ng_bookmark_add,
+    ng_bookmark_added,
+    ng_bookmark_remove,
+    ng_bookmark,
+    ng_bookmarks,
+    ng_cancel,
+    ng_check_box_outline_blank,
+    ng_check_box,
+    ng_check_circle,
+    ng_chevron_left,
+    ng_chevron_right,
+    ng_close,
+    ng_disabled_by_default,
+    ng_dock_to_bottom,
+    ng_dock_to_left,
+    ng_dock_to_right,
+    ng_done,
+    ng_drag_pan,
+    ng_expand_less,
+    ng_expand_more,
+    ng_favorite,
+    ng_filter_list,
+    ng_fullscreen_exit,
+    ng_fullscreen,
+    ng_heart_minus,
+    ng_heart_plus,
+    ng_history_toggle_off,
+    ng_home,
+    ng_indeterminate_check_box,
+    ng_install_mobile,
+    ng_login,
+    ng_logout,
+    ng_mic_off,
+    ng_mic,
+    ng_mouse,
+    ng_movie_info,
+    ng_movie,
+    ng_no_sound,
+    ng_notifications_active,
+    ng_notifications_off,
+    ng_notifications,
+    ng_page_info,
+    ng_password,
+    ng_power_settings_new,
+    ng_radio_button_checked,
+    ng_radio_button_unchecked,
+    ng_refresh,
+    ng_search,
+    ng_select_check_box,
+    ng_settings,
+    ng_shelf_position,
+    ng_sort,
+    ng_star,
+    ng_thumb_down,
+    ng_thumb_up,
+    ng_tips_and_updates,
+    ng_toggle_off,
+    ng_toggle_on,
+    ng_toolbar,
+    ng_touchpad_mouse,
+    ng_tune,
+    ng_volume_down,
+    ng_volume_mute,
+    ng_volume_off,
+    ng_volume_up,
+    ng_width_full,
+};

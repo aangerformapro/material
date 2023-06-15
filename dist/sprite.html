@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Sprite Demo</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+                "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+                "Droid Sans", "Helvetical Neue", sans-serif;
+        }
+
+        .demo {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .icon-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: calc(20% - 16px);
+            margin: 8px;
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <h1>SVG Sprite Demo</h1>
+    <div class="demo">
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-app-shortcut"></use></svg>
+            <span class="icon-name">
+                ng_app_shortcut            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-arrow-drop-down"></use></svg>
+            <span class="icon-name">
+                ng_arrow_drop_down            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-arrow-selector-tool"></use></svg>
+            <span class="icon-name">
+                ng_arrow_selector_tool            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-backspace"></use></svg>
+            <span class="icon-name">
+                ng_backspace            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-add"></use></svg>
+            <span class="icon-name">
+                ng_bookmark_add            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-added"></use></svg>
+            <span class="icon-name">
+                ng_bookmark_added            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-remove"></use></svg>
+            <span class="icon-name">
+                ng_bookmark_remove            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark"></use></svg>
+            <span class="icon-name">
+                ng_bookmark            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmarks"></use></svg>
+            <span class="icon-name">
+                ng_bookmarks            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-cancel"></use></svg>
+            <span class="icon-name">
+                ng_cancel            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-box-outline-blank"></use></svg>
+            <span class="icon-name">
+                ng_check_box_outline_blank            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-box"></use></svg>
+            <span class="icon-name">
+                ng_check_box            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-circle"></use></svg>
+            <span class="icon-name">
+                ng_check_circle            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-chevron-left"></use></svg>
+            <span class="icon-name">
+                ng_chevron_left            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-chevron-right"></use></svg>
+            <span class="icon-name">
+                ng_chevron_right            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-close"></use></svg>
+            <span class="icon-name">
+                ng_close            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-disabled-by-default"></use></svg>
+            <span class="icon-name">
+                ng_disabled_by_default            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-bottom"></use></svg>
+            <span class="icon-name">
+                ng_dock_to_bottom            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-left"></use></svg>
+            <span class="icon-name">
+                ng_dock_to_left            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-right"></use></svg>
+            <span class="icon-name">
+                ng_dock_to_right            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-done"></use></svg>
+            <span class="icon-name">
+                ng_done            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-drag-pan"></use></svg>
+            <span class="icon-name">
+                ng_drag_pan            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-expand-less"></use></svg>
+            <span class="icon-name">
+                ng_expand_less            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-expand-more"></use></svg>
+            <span class="icon-name">
+                ng_expand_more            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-favorite"></use></svg>
+            <span class="icon-name">
+                ng_favorite            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-filter-list"></use></svg>
+            <span class="icon-name">
+                ng_filter_list            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-fullscreen-exit"></use></svg>
+            <span class="icon-name">
+                ng_fullscreen_exit            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-fullscreen"></use></svg>
+            <span class="icon-name">
+                ng_fullscreen            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-heart-minus"></use></svg>
+            <span class="icon-name">
+                ng_heart_minus            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-heart-plus"></use></svg>
+            <span class="icon-name">
+                ng_heart_plus            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-history-toggle-off"></use></svg>
+            <span class="icon-name">
+                ng_history_toggle_off            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-home"></use></svg>
+            <span class="icon-name">
+                ng_home            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-indeterminate-check-box"></use></svg>
+            <span class="icon-name">
+                ng_indeterminate_check_box            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-install-mobile"></use></svg>
+            <span class="icon-name">
+                ng_install_mobile            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-login"></use></svg>
+            <span class="icon-name">
+                ng_login            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-logout"></use></svg>
+            <span class="icon-name">
+                ng_logout            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mic-off"></use></svg>
+            <span class="icon-name">
+                ng_mic_off            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mic"></use></svg>
+            <span class="icon-name">
+                ng_mic            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mouse"></use></svg>
+            <span class="icon-name">
+                ng_mouse            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-movie-info"></use></svg>
+            <span class="icon-name">
+                ng_movie_info            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-movie"></use></svg>
+            <span class="icon-name">
+                ng_movie            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-no-sound"></use></svg>
+            <span class="icon-name">
+                ng_no_sound            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications-active"></use></svg>
+            <span class="icon-name">
+                ng_notifications_active            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications-off"></use></svg>
+            <span class="icon-name">
+                ng_notifications_off            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications"></use></svg>
+            <span class="icon-name">
+                ng_notifications            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-page-info"></use></svg>
+            <span class="icon-name">
+                ng_page_info            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-password"></use></svg>
+            <span class="icon-name">
+                ng_password            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-power-settings-new"></use></svg>
+            <span class="icon-name">
+                ng_power_settings_new            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-radio-button-checked"></use></svg>
+            <span class="icon-name">
+                ng_radio_button_checked            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-radio-button-unchecked"></use></svg>
+            <span class="icon-name">
+                ng_radio_button_unchecked            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-refresh"></use></svg>
+            <span class="icon-name">
+                ng_refresh            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-search"></use></svg>
+            <span class="icon-name">
+                ng_search            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-select-check-box"></use></svg>
+            <span class="icon-name">
+                ng_select_check_box            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-settings"></use></svg>
+            <span class="icon-name">
+                ng_settings            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-shelf-position"></use></svg>
+            <span class="icon-name">
+                ng_shelf_position            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-sort"></use></svg>
+            <span class="icon-name">
+                ng_sort            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-star"></use></svg>
+            <span class="icon-name">
+                ng_star            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-thumb-down"></use></svg>
+            <span class="icon-name">
+                ng_thumb_down            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-thumb-up"></use></svg>
+            <span class="icon-name">
+                ng_thumb_up            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-tips-and-updates"></use></svg>
+            <span class="icon-name">
+                ng_tips_and_updates            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toggle-off"></use></svg>
+            <span class="icon-name">
+                ng_toggle_off            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toggle-on"></use></svg>
+            <span class="icon-name">
+                ng_toggle_on            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toolbar"></use></svg>
+            <span class="icon-name">
+                ng_toolbar            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-touchpad-mouse"></use></svg>
+            <span class="icon-name">
+                ng_touchpad_mouse            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-tune"></use></svg>
+            <span class="icon-name">
+                ng_tune            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-down"></use></svg>
+            <span class="icon-name">
+                ng_volume_down            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-mute"></use></svg>
+            <span class="icon-name">
+                ng_volume_mute            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-off"></use></svg>
+            <span class="icon-name">
+                ng_volume_off            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-up"></use></svg>
+            <span class="icon-name">
+                ng_volume_up            </span>
+        </div>
+
+            <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-width-full"></use></svg>
+            <span class="icon-name">
+                ng_width_full            </span>
+        </div>
+
+        </div>
+ 
+    <script type="module">
+        import {loadAll} from './sprite.js';
+        loadAll();
+    </script>
+
+</body>
+
+</html>

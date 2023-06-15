@@ -18,13 +18,13 @@ function generateXLink($item, $class = 'ng-svg-icon')
     return sprintf('<svg fill="currentColor" class="%s"><use xlink:href="#%s"></use></svg>', $class, $item['id']);
 }
 
-$svgs        = getcwd() . '/svgs/';
-$dist        = getcwd() . '/dist/';
+$svgs           = getcwd() . '/svgs/';
+$dist           = getcwd() . '/dist/';
 
-$files       = scandir($svgs);
-$files       = array_filter($files, fn ($f) => str_ends_with($f, '.svg'));
+$files          = scandir($svgs);
+$files          = array_filter($files, fn ($f) => str_ends_with($f, '.svg'));
 
-$items       = $result = [];
+$items          = $result = [];
 
 foreach ($files as $file)
 {
@@ -45,7 +45,7 @@ foreach ($files as $file)
     $result[$name]['xlink']  = generateXLink($items[$name]);
 }
 
-$container   = '<svg width="0" height="0" style="display: none;" id="ng-sprite"></svg>';
+$container      = '<svg width="0" height="0" style="display: none;" id="ng-sprite"></svg>';
 ob_start(); ?>
 
 /**
@@ -103,6 +103,8 @@ function loadSprite(id)
     }
 }
 
+
+
 // Easy to inject icon class
 class Xlink
 {
@@ -155,22 +157,135 @@ export function render(){
     return sprite.outerHTML;
 }
 
+
+
+export function loadAll(){
+    for(let id of Object.keys(icons)){
+        loadSprite(id);
+    }
+}
+
+
 // generate xlinks
 <?php
 
-foreach (array_keys($result) as $id):
-    $varName = str_replace('-', '_', $id); ?>
-export const <?= $varName; ?> = new Xlink('<?= $id; ?>');
-<?php endforeach;
-// generate js file
+$def            = [
+    '// generate default export',
+    'export default {',
+];
 
-if(@file_put_contents($dist . 'sprite.js', ob_get_clean()))
+$names          = [];
+// $names       = array_keys($result);
+// $names       = array_map(
+//     fn ($n) => str_replace('-', '_', $n),
+//     $names
+// );
+
+foreach (array_keys($result) as $id):
+    $varName    = str_replace('-', '_', $id);
+    $names[$id] = $varName;
+    $def[]      = "    {$varName},";
+    ?>
+export const <?= $varName; ?> = new Xlink('<?= $id; ?>');
+<?php
+endforeach;
+
+// add default
+
+echo implode("\n", $def) . "\n};\n";
+
+// generate js file
+if($contents = ob_get_clean())
 {
-    @copy($dist . 'sprite.js', $dist . 'sprite.mjs');
+    $outdir = basename($dist);
+    echo "Creating: {$outdir}/sprite.js\n";
+
+    if(@file_put_contents($dist . 'sprite.js', $contents))
+    {
+        echo "Creating: {$outdir}/sprite.mjs\n";
+        @copy($dist . 'sprite.js', $dist . 'sprite.mjs');
+    }
+    // generate SVG
+    echo "Creating: {$outdir}/sprite.svg\n";
+    @file_put_contents($dist . 'sprite.svg', str_replace('><', ">\n" . implode(
+        "\n",
+        array_map(fn ($x) => $x['symbol'], $result)
+    ) . "\n<", $container));
 }
 
-// generate SVG
-@file_put_contents($dist . 'sprite.svg', str_replace('><', ">\n" . implode(
-    "\n",
-    array_map(fn ($x) => $x['symbol'], $result)
-) . "\n<", $container));
+// generate html demo
+ob_start(); ?><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Sprite Demo</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+                "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+                "Droid Sans", "Helvetical Neue", sans-serif;
+        }
+
+        .demo {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .icon-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: calc(20% - 16px);
+            margin: 8px;
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <h1>SVG Sprite Demo</h1>
+    <div class="demo">
+
+    <?php  foreach ($names as $id => $name): ?>
+        <div class="icon-card">
+        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#<?= $id; ?>"></use></svg>
+            <span class="icon-name">
+                <?= $name; ?>
+            </span>
+        </div>
+
+    <?php endforeach; ?>
+    </div>
+ 
+    <script type="module">
+        import {loadAll} from './sprite.js';
+        loadAll();
+    </script>
+
+</body>
+
+</html><?php
+
+$contents       = ob_get_clean();
+echo "Creating: {$outdir}/sprite.html\n";
+
+file_put_contents($dist . 'sprite.html', $contents);
