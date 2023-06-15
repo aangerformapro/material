@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/favicon.svg" type="image/svg">
     <title>SVG Sprite Demo</title>
     <style>
         *,
@@ -13,469 +13,756 @@
             margin: 0;
             padding: 0;
         }
-
         html {
             font-size: 16px;
             line-height: 1.2;
         }
-
         body {
             min-height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
                 "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
                 "Droid Sans", "Helvetical Neue", sans-serif;
-        }
 
+            background: #ddd;
+            color: #333;
+            padding-top: 250px;
+        }
+        header {
+            position:fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            background: #dddd;
+            backdrop-filter: blur(3px);
+            height: 250px;
+        }
+        footer{
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            margin: 16px auto;
+            padding: 16px 0;
+        }
+        h1{
+            margin: 4vmin;
+            text-align: center;
+            font-size: 32px;
+        }
+        h1:after{
+            content:'';
+            height: 3px;
+            width: 90%;
+            background: #333;
+            display: block;
+            margin: 3vmin auto;
+        }
         .demo {
             display: flex;
             flex-wrap: wrap;
-
+            margin: 16px auto;
         }
-
         .icon-card {
+            width: calc(50% - 18px);
+            margin: 16px 8px;
+            display: flex;
+            justify-content: center;
+            font-weight: 600;
+            height: 160px;
+            order:-1; 
+            transition-duration: .5s;
+        }
+        .icon-card-inner{
+            margin: auto;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: calc(20% - 16px);
-            margin: 8px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 8px 16px;
+        }
+        .icon-card svg{
+            width: 64px;
+            height: 64px;
+        }
+        .icon-name, .icon-name-short{
+            margin: 8px auto;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        .icon-card-inner:hover {
+            font-weight: 700;
+            background: #fff;
+            border-color: rgba(0,0,0, .3);
+        }
+        .icon-card-inner:not(:hover) .icon-name,
+        .icon-card-inner:hover .icon-name-short {
+            display: none;
+        }
+        .quicksearch{
+            display: flex;
+            justify-content: center;
+        }
+        .quicksearch [type="text"] {
+            outline:0;
+            width: 80%;
+            height: 48px;
+            font-size: 20px;
+            padding: 8px 16px;
+            margin: 0 auto 16px auto;
+            background: #dddc;
+            color: #333c;
+            border: 2px solid #3333;
+            border-radius: 16px;
+            transition-duration: .25s;
+            
+        }
+        .quicksearch [type="text"]:focus{
+            background: #fff;
+            color: #000;
+            border-color: #333c;
+        }
+        .info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .info svg{
+            margin: 6px 0 0 6px;
+        }
+        a{
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover{
+            font-weight: 600;
+            color: #222;
+            text-decoration: underline;
+        }
+        a:active{
+            color: #111;
+        }
+        .zoomOut{
+            opacity:0;
+            transform: scale(0);
+            transition-duration: .5s;
+            order:1;
+        }
+
+        @media (min-width: 768px) {
+            .icon-card {
+                width: calc(33% - 18px);
+            }
+        }
+        @media (min-width: 992px) {
+            .icon-card {
+                width: calc(25% - 18px);
+            }
         }
     </style>
-
-    
 </head>
-
 <body>
-    <h1>SVG Sprite Demo</h1>
+    <header>
+        <h1>SVG Sprite Demo</h1>
+        <div class="quicksearch">
+            <input type="text" name="search" id="search" value="" placeholder="Search for icon ..." tabindex="0">
+        </div>
+        <div class="info">
+            <a class="info" href="https://fonts.google.com/icons?icon.set=Material+Symbols" target="_blank" title="Google Fonts">
+                <span>Find more symbols</span><i class="ng-open-in-new" size="20"></i>
+            </a>
+        </div>
+    </header>
+
     <div class="demo">
+       
+                    <div class="icon-card" data-keywords="app shortcut">
+                <div class="icon-card-inner">
+                    <i class="ng-app-shortcut" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-app-shortcut"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-app-shortcut</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="arrow drop down">
+                <div class="icon-card-inner">
+                    <i class="ng-arrow-drop-down" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-arrow-drop-down"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-arrow-drop-down</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="arrow selector tool">
+                <div class="icon-card-inner">
+                    <i class="ng-arrow-selector-tool" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-arrow-selector-tool"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-arrow-selector-tool</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="backspace">
+                <div class="icon-card-inner">
+                    <i class="ng-backspace" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-backspace"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-backspace</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="bookmark add">
+                <div class="icon-card-inner">
+                    <i class="ng-bookmark-add" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-bookmark-add"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-bookmark-add</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="bookmark added">
+                <div class="icon-card-inner">
+                    <i class="ng-bookmark-added" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-bookmark-added"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-bookmark-added</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="bookmark remove">
+                <div class="icon-card-inner">
+                    <i class="ng-bookmark-remove" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-bookmark-remove"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-bookmark-remove</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="bookmark">
+                <div class="icon-card-inner">
+                    <i class="ng-bookmark" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-bookmark"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-bookmark</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="bookmarks">
+                <div class="icon-card-inner">
+                    <i class="ng-bookmarks" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-bookmarks"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-bookmarks</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="cancel">
+                <div class="icon-card-inner">
+                    <i class="ng-cancel" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-cancel"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-cancel</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="check box outline blank">
+                <div class="icon-card-inner">
+                    <i class="ng-check-box-outline-blank" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-check-box-outline-blank"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-check-box-outline-blank</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="check box">
+                <div class="icon-card-inner">
+                    <i class="ng-check-box" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-check-box"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-check-box</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="check circle">
+                <div class="icon-card-inner">
+                    <i class="ng-check-circle" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-check-circle"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-check-circle</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="chevron left">
+                <div class="icon-card-inner">
+                    <i class="ng-chevron-left" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-chevron-left"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-chevron-left</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="chevron right">
+                <div class="icon-card-inner">
+                    <i class="ng-chevron-right" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-chevron-right"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-chevron-right</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="close">
+                <div class="icon-card-inner">
+                    <i class="ng-close" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-close"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-close</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="disabled by default">
+                <div class="icon-card-inner">
+                    <i class="ng-disabled-by-default" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-disabled-by-default"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-disabled-by-default</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="dock to bottom">
+                <div class="icon-card-inner">
+                    <i class="ng-dock-to-bottom" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-dock-to-bottom"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-dock-to-bottom</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="dock to left">
+                <div class="icon-card-inner">
+                    <i class="ng-dock-to-left" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-dock-to-left"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-dock-to-left</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="dock to right">
+                <div class="icon-card-inner">
+                    <i class="ng-dock-to-right" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-dock-to-right"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-dock-to-right</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="done">
+                <div class="icon-card-inner">
+                    <i class="ng-done" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-done"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-done</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="drag pan">
+                <div class="icon-card-inner">
+                    <i class="ng-drag-pan" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-drag-pan"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-drag-pan</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="expand circle down">
+                <div class="icon-card-inner">
+                    <i class="ng-expand-circle-down" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-expand-circle-down"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-expand-circle-down</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="expand circle up">
+                <div class="icon-card-inner">
+                    <i class="ng-expand-circle-up" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-expand-circle-up"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-expand-circle-up</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="expand less">
+                <div class="icon-card-inner">
+                    <i class="ng-expand-less" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-expand-less"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-expand-less</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="expand more">
+                <div class="icon-card-inner">
+                    <i class="ng-expand-more" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-expand-more"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-expand-more</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="favorite">
+                <div class="icon-card-inner">
+                    <i class="ng-favorite" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-favorite"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-favorite</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="filter list">
+                <div class="icon-card-inner">
+                    <i class="ng-filter-list" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-filter-list"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-filter-list</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="fullscreen exit">
+                <div class="icon-card-inner">
+                    <i class="ng-fullscreen-exit" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-fullscreen-exit"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-fullscreen-exit</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="fullscreen">
+                <div class="icon-card-inner">
+                    <i class="ng-fullscreen" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-fullscreen"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-fullscreen</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="heart minus">
+                <div class="icon-card-inner">
+                    <i class="ng-heart-minus" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-heart-minus"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-heart-minus</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="heart plus">
+                <div class="icon-card-inner">
+                    <i class="ng-heart-plus" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-heart-plus"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-heart-plus</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="help">
+                <div class="icon-card-inner">
+                    <i class="ng-help" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-help"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-help</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="history toggle off">
+                <div class="icon-card-inner">
+                    <i class="ng-history-toggle-off" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-history-toggle-off"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-history-toggle-off</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="home">
+                <div class="icon-card-inner">
+                    <i class="ng-home" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-home"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-home</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="indeterminate check box">
+                <div class="icon-card-inner">
+                    <i class="ng-indeterminate-check-box" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-indeterminate-check-box"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-indeterminate-check-box</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="info">
+                <div class="icon-card-inner">
+                    <i class="ng-info" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-info"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-info</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="install mobile">
+                <div class="icon-card-inner">
+                    <i class="ng-install-mobile" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-install-mobile"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-install-mobile</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="login">
+                <div class="icon-card-inner">
+                    <i class="ng-login" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-login"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-login</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="logout">
+                <div class="icon-card-inner">
+                    <i class="ng-logout" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-logout"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-logout</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="menu open">
+                <div class="icon-card-inner">
+                    <i class="ng-menu-open" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-menu-open"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-menu-open</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="mic off">
+                <div class="icon-card-inner">
+                    <i class="ng-mic-off" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-mic-off"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-mic-off</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="mic">
+                <div class="icon-card-inner">
+                    <i class="ng-mic" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-mic"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-mic</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="mouse">
+                <div class="icon-card-inner">
+                    <i class="ng-mouse" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-mouse"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-mouse</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="movie info">
+                <div class="icon-card-inner">
+                    <i class="ng-movie-info" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-movie-info"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-movie-info</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="movie">
+                <div class="icon-card-inner">
+                    <i class="ng-movie" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-movie"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-movie</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="no sound">
+                <div class="icon-card-inner">
+                    <i class="ng-no-sound" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-no-sound"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-no-sound</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="notifications active">
+                <div class="icon-card-inner">
+                    <i class="ng-notifications-active" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-notifications-active"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-notifications-active</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="notifications off">
+                <div class="icon-card-inner">
+                    <i class="ng-notifications-off" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-notifications-off"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-notifications-off</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="notifications">
+                <div class="icon-card-inner">
+                    <i class="ng-notifications" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-notifications"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-notifications</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="open in new">
+                <div class="icon-card-inner">
+                    <i class="ng-open-in-new" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-open-in-new"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-open-in-new</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="page info">
+                <div class="icon-card-inner">
+                    <i class="ng-page-info" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-page-info"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-page-info</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="password">
+                <div class="icon-card-inner">
+                    <i class="ng-password" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-password"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-password</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="power settings new">
+                <div class="icon-card-inner">
+                    <i class="ng-power-settings-new" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-power-settings-new"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-power-settings-new</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="radio button checked">
+                <div class="icon-card-inner">
+                    <i class="ng-radio-button-checked" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-radio-button-checked"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-radio-button-checked</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="radio button unchecked">
+                <div class="icon-card-inner">
+                    <i class="ng-radio-button-unchecked" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-radio-button-unchecked"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-radio-button-unchecked</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="refresh">
+                <div class="icon-card-inner">
+                    <i class="ng-refresh" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-refresh"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-refresh</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="search">
+                <div class="icon-card-inner">
+                    <i class="ng-search" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-search"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-search</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="select check box">
+                <div class="icon-card-inner">
+                    <i class="ng-select-check-box" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-select-check-box"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-select-check-box</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="settings">
+                <div class="icon-card-inner">
+                    <i class="ng-settings" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-settings"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-settings</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="shelf position">
+                <div class="icon-card-inner">
+                    <i class="ng-shelf-position" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-shelf-position"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-shelf-position</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="sort">
+                <div class="icon-card-inner">
+                    <i class="ng-sort" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-sort"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-sort</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="star">
+                <div class="icon-card-inner">
+                    <i class="ng-star" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-star"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-star</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="thumb down">
+                <div class="icon-card-inner">
+                    <i class="ng-thumb-down" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-thumb-down"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-thumb-down</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="thumb up">
+                <div class="icon-card-inner">
+                    <i class="ng-thumb-up" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-thumb-up"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-thumb-up</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="tips and updates">
+                <div class="icon-card-inner">
+                    <i class="ng-tips-and-updates" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-tips-and-updates"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-tips-and-updates</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="toggle off">
+                <div class="icon-card-inner">
+                    <i class="ng-toggle-off" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-toggle-off"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-toggle-off</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="toggle on">
+                <div class="icon-card-inner">
+                    <i class="ng-toggle-on" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-toggle-on"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-toggle-on</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="toolbar">
+                <div class="icon-card-inner">
+                    <i class="ng-toolbar" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-toolbar"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-toolbar</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="touchpad mouse">
+                <div class="icon-card-inner">
+                    <i class="ng-touchpad-mouse" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-touchpad-mouse"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-touchpad-mouse</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="tune">
+                <div class="icon-card-inner">
+                    <i class="ng-tune" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-tune"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-tune</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="volume down">
+                <div class="icon-card-inner">
+                    <i class="ng-volume-down" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-volume-down"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-volume-down</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="volume mute">
+                <div class="icon-card-inner">
+                    <i class="ng-volume-mute" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-volume-mute"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-volume-mute</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="volume off">
+                <div class="icon-card-inner">
+                    <i class="ng-volume-off" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-volume-off"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-volume-off</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="volume up">
+                <div class="icon-card-inner">
+                    <i class="ng-volume-up" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-volume-up"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-volume-up</span>
+                </div>
+            </div>
+                    <div class="icon-card" data-keywords="width full">
+                <div class="icon-card-inner">
+                    <i class="ng-width-full" size="64"></i>
+                    <span class="icon-name">&lt;i class="ng-width-full"&gt;&lt;/i&gt;</span>
+                    <span class="icon-name-short">i.ng-width-full</span>
+                </div>
+            </div>
+            </div>
+    <footer>
+        &copy; <span class="year">2023</span>  Aymeric Anger
+    </footer>
 
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-app-shortcut"></use></svg>
-            <span class="icon-name">
-                ng_app_shortcut            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-arrow-drop-down"></use></svg>
-            <span class="icon-name">
-                ng_arrow_drop_down            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-arrow-selector-tool"></use></svg>
-            <span class="icon-name">
-                ng_arrow_selector_tool            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-backspace"></use></svg>
-            <span class="icon-name">
-                ng_backspace            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-add"></use></svg>
-            <span class="icon-name">
-                ng_bookmark_add            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-added"></use></svg>
-            <span class="icon-name">
-                ng_bookmark_added            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark-remove"></use></svg>
-            <span class="icon-name">
-                ng_bookmark_remove            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmark"></use></svg>
-            <span class="icon-name">
-                ng_bookmark            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-bookmarks"></use></svg>
-            <span class="icon-name">
-                ng_bookmarks            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-cancel"></use></svg>
-            <span class="icon-name">
-                ng_cancel            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-box-outline-blank"></use></svg>
-            <span class="icon-name">
-                ng_check_box_outline_blank            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-box"></use></svg>
-            <span class="icon-name">
-                ng_check_box            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-check-circle"></use></svg>
-            <span class="icon-name">
-                ng_check_circle            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-chevron-left"></use></svg>
-            <span class="icon-name">
-                ng_chevron_left            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-chevron-right"></use></svg>
-            <span class="icon-name">
-                ng_chevron_right            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-close"></use></svg>
-            <span class="icon-name">
-                ng_close            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-disabled-by-default"></use></svg>
-            <span class="icon-name">
-                ng_disabled_by_default            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-bottom"></use></svg>
-            <span class="icon-name">
-                ng_dock_to_bottom            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-left"></use></svg>
-            <span class="icon-name">
-                ng_dock_to_left            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-dock-to-right"></use></svg>
-            <span class="icon-name">
-                ng_dock_to_right            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-done"></use></svg>
-            <span class="icon-name">
-                ng_done            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-drag-pan"></use></svg>
-            <span class="icon-name">
-                ng_drag_pan            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-expand-less"></use></svg>
-            <span class="icon-name">
-                ng_expand_less            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-expand-more"></use></svg>
-            <span class="icon-name">
-                ng_expand_more            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-favorite"></use></svg>
-            <span class="icon-name">
-                ng_favorite            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-filter-list"></use></svg>
-            <span class="icon-name">
-                ng_filter_list            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-fullscreen-exit"></use></svg>
-            <span class="icon-name">
-                ng_fullscreen_exit            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-fullscreen"></use></svg>
-            <span class="icon-name">
-                ng_fullscreen            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-heart-minus"></use></svg>
-            <span class="icon-name">
-                ng_heart_minus            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-heart-plus"></use></svg>
-            <span class="icon-name">
-                ng_heart_plus            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-history-toggle-off"></use></svg>
-            <span class="icon-name">
-                ng_history_toggle_off            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-home"></use></svg>
-            <span class="icon-name">
-                ng_home            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-indeterminate-check-box"></use></svg>
-            <span class="icon-name">
-                ng_indeterminate_check_box            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-install-mobile"></use></svg>
-            <span class="icon-name">
-                ng_install_mobile            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-login"></use></svg>
-            <span class="icon-name">
-                ng_login            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-logout"></use></svg>
-            <span class="icon-name">
-                ng_logout            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mic-off"></use></svg>
-            <span class="icon-name">
-                ng_mic_off            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mic"></use></svg>
-            <span class="icon-name">
-                ng_mic            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-mouse"></use></svg>
-            <span class="icon-name">
-                ng_mouse            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-movie-info"></use></svg>
-            <span class="icon-name">
-                ng_movie_info            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-movie"></use></svg>
-            <span class="icon-name">
-                ng_movie            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-no-sound"></use></svg>
-            <span class="icon-name">
-                ng_no_sound            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications-active"></use></svg>
-            <span class="icon-name">
-                ng_notifications_active            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications-off"></use></svg>
-            <span class="icon-name">
-                ng_notifications_off            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-notifications"></use></svg>
-            <span class="icon-name">
-                ng_notifications            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-page-info"></use></svg>
-            <span class="icon-name">
-                ng_page_info            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-password"></use></svg>
-            <span class="icon-name">
-                ng_password            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-power-settings-new"></use></svg>
-            <span class="icon-name">
-                ng_power_settings_new            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-radio-button-checked"></use></svg>
-            <span class="icon-name">
-                ng_radio_button_checked            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-radio-button-unchecked"></use></svg>
-            <span class="icon-name">
-                ng_radio_button_unchecked            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-refresh"></use></svg>
-            <span class="icon-name">
-                ng_refresh            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-search"></use></svg>
-            <span class="icon-name">
-                ng_search            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-select-check-box"></use></svg>
-            <span class="icon-name">
-                ng_select_check_box            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-settings"></use></svg>
-            <span class="icon-name">
-                ng_settings            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-shelf-position"></use></svg>
-            <span class="icon-name">
-                ng_shelf_position            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-sort"></use></svg>
-            <span class="icon-name">
-                ng_sort            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-star"></use></svg>
-            <span class="icon-name">
-                ng_star            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-thumb-down"></use></svg>
-            <span class="icon-name">
-                ng_thumb_down            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-thumb-up"></use></svg>
-            <span class="icon-name">
-                ng_thumb_up            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-tips-and-updates"></use></svg>
-            <span class="icon-name">
-                ng_tips_and_updates            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toggle-off"></use></svg>
-            <span class="icon-name">
-                ng_toggle_off            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toggle-on"></use></svg>
-            <span class="icon-name">
-                ng_toggle_on            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-toolbar"></use></svg>
-            <span class="icon-name">
-                ng_toolbar            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-touchpad-mouse"></use></svg>
-            <span class="icon-name">
-                ng_touchpad_mouse            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-tune"></use></svg>
-            <span class="icon-name">
-                ng_tune            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-down"></use></svg>
-            <span class="icon-name">
-                ng_volume_down            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-mute"></use></svg>
-            <span class="icon-name">
-                ng_volume_mute            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-off"></use></svg>
-            <span class="icon-name">
-                ng_volume_off            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-volume-up"></use></svg>
-            <span class="icon-name">
-                ng_volume_up            </span>
-        </div>
-
-            <div class="icon-card">
-        <svg fill="currentColor" class="ng-svg-icon" width="40"><use xlink:href="#ng-width-full"></use></svg>
-            <span class="icon-name">
-                ng_width_full            </span>
-        </div>
-
-        </div>
- 
     <script type="module">
-        import {loadAll} from './sprite.js';
-        loadAll();
+        import { watch } from './sprite.js';
+        const year = (new Date()).getFullYear(), search = document.querySelector('#search');
+        document.querySelectorAll('.year').forEach(el=>el.innerHTML= year);
+        watch();
+
+        let targets;
+        function findIcon(e){
+            targets ??= [...document.querySelectorAll('.icon-card')];
+            let input = search.value, words = input.split(/\s+/);
+            targets.forEach(t => {
+                if(input.length === 0 || words.some(w =>  t.matches(`.demo [data-keywords*="${w}"]`))){
+                    t.classList.remove('zoomOut');
+                } else {
+                    t.classList.add('zoomOut');
+                }
+                scrollTo(0,0);
+            });
+        }
+
+        // @link https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
+        function selectText(node) {
+            if (document.body.createTextRange) {
+                const range = document.body.createTextRange();
+                range.moveToElementText(node);
+                range.select();
+            } else if (window.getSelection) {
+                const selection = window.getSelection(), range = document.createRange();
+                range.selectNodeContents(node);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else {
+                console.warn("Could not select text in node: Unsupported browser.");
+            }
+        }
+
+        search.value = '';
+        search.addEventListener('keyup', findIcon);
+        search.addEventListener('change', findIcon);
+        search.focus();
+
+        addEventListener('click', e=>{
+            let target;
+            if(target = e.target.closest('.icon-card')){
+                selectText(target.querySelector('.icon-name'));
+            }
+        });
     </script>
-
 </body>
-
 </html>
