@@ -480,7 +480,8 @@ ob_start(); ?><!DOCTYPE html>
         import { watch } from './sprite.js';
         const year = (new Date()).getFullYear(), search = document.querySelector('#search');
         document.querySelectorAll('.year').forEach(el=>el.innerHTML= year);
-        watch();
+        // disconnects the observer when all symbols are loaded
+        watch()();
 
         let targets;
         function findIcon(e){
