@@ -220,7 +220,7 @@ const
                 }
                 nodes.add(target);
 
-                // removes creates the icon and remove the node
+                // creates the icon and remove the node
                 const
                     id = target.className.split(' ')[0],
                     [, name] = names.find(item => item[0] === id) ?? ['', ''];
