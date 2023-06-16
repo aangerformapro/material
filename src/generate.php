@@ -2,15 +2,27 @@
 
 declare(strict_types=1);
 
+function renameFiles()
+{
+    return include __DIR__ . '/sort.php';
+}
+
 function generateSymbol($item)
 {
     $code   = [];
 
     $code[] = sprintf('<symbol id="%s" xmlns="%s" viewBox="%s">', $item['id'], $item['xmlns'], $item['viewBox']);
-    $code[] = sprintf('<path d="%s"></path>', $item['path:d']);
-    $code[] = sprintf('</symbol>');
+    $code[] = $item['path'];
+    $code[] = '</symbol>';
 
     return implode('', $code);
+}
+
+function outerHTML($node)
+{
+    $doc = new DOMDocument();
+    $doc->appendChild(node: $doc->importNode($node, true));
+    return $doc->saveHTML();
 }
 
 function generateXLink($item, $class = 'ng-svg-icon')
@@ -21,12 +33,12 @@ function generateXLink($item, $class = 'ng-svg-icon')
 $svgs           = getcwd() . '/svgs/';
 $dist           = getcwd() . '/dist/';
 
-$files          = scandir($svgs);
-$files          = array_filter($files, fn ($f) => str_ends_with($f, '.svg'));
+// $files          = scandir($svgs);
+// $files          = array_filter($files, fn ($f) => str_ends_with($f, '.svg'));
 
 $items          = $result = [];
 
-foreach ($files as $file)
+foreach (renameFiles() as $file)
 {
     $doc                     = new DOMDocument();
     $doc->load($svgs . $file);
@@ -35,12 +47,20 @@ foreach ($files as $file)
 
     $name                    = mb_substr($file, 0, -4);
 
+    $path                    = '';
+
+    foreach ($svg->childNodes as $node)
+    {
+        $path .= outerHTML($node);
+    }
+
     $items[$name]            = [
         'id'      => $name,
         'viewBox' => $svg->getAttribute('viewBox'),
         'xmlns'   => $svg->getAttribute('xmlns'),
-        'path:d'  => $svg->firstChild->getAttribute('d'),
+        'path'    => $path,
     ];
+
     $result[$name]['symbol'] = generateSymbol($items[$name]);
     $result[$name]['xlink']  = generateXLink($items[$name]);
 }
@@ -172,7 +192,7 @@ export function loadAll(){
 $def            = [
     '',
     '// generate default export',
-    'const svgs = {',
+    'export const svgs = {',
 ];
 
 $names          = [];
@@ -288,6 +308,10 @@ ob_start(); ?><!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/favicon.svg" type="image/svg">
     <title>SVG Sprite Demo</title>
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
     <style>
         *,
         *::before,
@@ -308,7 +332,7 @@ ob_start(); ?><!DOCTYPE html>
 
             background: #ddd;
             color: #333;
-            padding-top: 250px;
+            padding-top: 300px;
         }
         header {
             position:fixed;
@@ -317,7 +341,7 @@ ob_start(); ?><!DOCTYPE html>
             width: 100%;
             background: #dddd;
             backdrop-filter: blur(3px);
-            height: 250px;
+            height: 300px;
         }
         footer{
             font-weight: 600;
@@ -353,6 +377,7 @@ ob_start(); ?><!DOCTYPE html>
             height: 160px;
             order:-1; 
             transition-duration: .5s;
+            color: var(--ng-icons-colors, #333);
         }
         .icon-card-inner{
             margin: auto;
@@ -383,11 +408,14 @@ ob_start(); ?><!DOCTYPE html>
         .icon-card-inner:hover .icon-name-short {
             display: none;
         }
-        .quicksearch{
+        .quicksearch, 
+        .color-picker {
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        .quicksearch [type="text"] {
+        #search {
             outline:0;
             width: 80%;
             height: 48px;
@@ -399,33 +427,86 @@ ob_start(); ?><!DOCTYPE html>
             border: 2px solid #3333;
             border-radius: 16px;
             transition-duration: .25s;
-            
         }
-        .quicksearch [type="text"]:focus{
+        #search:focus, 
+        #search:hover{
             background: #fff;
             color: #000;
             border-color: #333c;
         }
-        .info{
+        .color-picker {
+            font-size: 20px;
+            flex-direction: row;
+            width: 100%;
+        }
+        .clr-field {
+            margin: 16px auto;
+            border: 2px solid #3333;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .clr-field:hover [type="text"],
+        .clr-field:focus-within [type="text"] {
+            color: #000;
+            border-color: #333c;
+            background: #fff;
+        }
+        
+        .color-picker .clr-field {
+            cursor: pointer;
+            width: 90%;
+        }
+        .color-picker label {
+            font-weight: 500;
+            text-align: right;
+            margin-right: 32px;
+            display: none;
+            cursor: pointer;
+        }
+        .clr-field [type="text"]{
+            font-size: 20px;
+            width: 100%;
+            height: 48px;
+            padding: 8px 16px;
+            background: #dddc;
+            color: #333c;
+            border: 0;
+            cursor: pointer;
+        }
+        .clr-field button {
+            width: 20%;
+            height: 80%;
+            right: 2.5%;
+            border-radius: 4px;
+        }
+        .info, 
+        .tools {
             display: flex;
-            justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .tools {
+            justify-content: space-evenly;
+            width: 70%;
+            margin: 0 auto;
         }
         .info svg{
             margin: 6px 0 0 6px;
         }
-        a{
+        .info a{
             font-size: 20px;
             font-weight: 500;
             color: #333;
             text-decoration: none;
+            display: flex;
         }
-        a:hover{
+        .info a:hover{
             font-weight: 600;
             color: #222;
             text-decoration: underline;
         }
-        a:active{
+        .info a:active{
             color: #111;
         }
         .zoomOut{
@@ -434,16 +515,37 @@ ob_start(); ?><!DOCTYPE html>
             transition-duration: .5s;
             order:1;
         }
-
+        
         @media (min-width: 768px) {
             .icon-card {
                 width: calc(33% - 18px);
             }
         }
         @media (min-width: 992px) {
+            body{
+                padding-top: 280px;
+            }
+            header{
+                height: 280px;
+            }
             .icon-card {
                 width: calc(25% - 18px);
             }
+            .tools{
+                flex-direction: row;
+            }
+            .color-picker {
+                width: 70%;
+            }
+            .color-picker label{
+                display: unset;
+            }
+            .color-picker .clr-field {
+                width: 50%;
+            }
+        }
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
@@ -453,15 +555,21 @@ ob_start(); ?><!DOCTYPE html>
         <div class="quicksearch">
             <input type="text" name="search" id="search" value="" placeholder="Search for icon ..." tabindex="0">
         </div>
-        <div class="info">
-            <a class="info" href="https://fonts.google.com/icons?icon.set=Material+Symbols" target="_blank" title="Google Fonts">
-                <span>Find more symbols</span><i class="ng-open-in-new" size="20"></i>
-            </a>
+        <div class="tools">
+            <div class="color-picker square">
+                <label for="color">Please pick out a color:</label>
+                <input type="text" name="color" id="color"  value="#333" class="coloris instance1" data-coloris>
+            </div>
+            <div class="info">
+                <a href="https://fonts.google.com/icons?icon.set=Material+Symbols" target="_blank" title="Google Fonts">
+                    <span>Find more symbols</span><i class="ng-open-in-new" size="20"></i>
+                </a>
+            </div>
         </div>
+       
     </header>
 
     <div class="demo">
-       
         <?php  foreach ($names as $id => $name): ?>
             <div class="icon-card" data-keywords="<?= str_replace('_', ' ', mb_substr($name, 3)); ?>">
                 <div class="icon-card-inner">
@@ -476,9 +584,14 @@ ob_start(); ?><!DOCTYPE html>
         &copy; <span class="year">2023</span>  Aymeric Anger
     </footer>
 
-    <script type="module">
-        import { watch } from './sprite.js';
-        const year = (new Date()).getFullYear(), search = document.querySelector('#search');
+    <script src="./sprite.umd.min.js"></script>
+
+    <script>
+        const { watch } = ngsprite;
+        const 
+            year = (new Date()).getFullYear(), search = document.querySelector('#search'), 
+            demo = document.querySelector('.demo'), 
+            picker = document.querySelector('#color');
         document.querySelectorAll('.year').forEach(el=>el.innerHTML= year);
         // disconnects the observer when all symbols are loaded
         watch()();
@@ -514,7 +627,7 @@ ob_start(); ?><!DOCTYPE html>
         }
 
         search.value = '';
-        search.addEventListener('keyup', findIcon);
+        search.addEventListener('input', findIcon);
         search.addEventListener('change', findIcon);
         search.focus();
 
@@ -524,6 +637,39 @@ ob_start(); ?><!DOCTYPE html>
                 selectText(target.querySelector('.icon-name'));
             }
         });
+
+        
+        Coloris.setInstance('.instance1', {
+            theme: 'pill', themeMode: 'dark', defaultColor: '#333333',
+            formatToggle: true, closeButton: true, clearButton: true,
+            swatches: ['#067bc2', '#84bcda', '#80e377', '#ecc30b', '#f37748', '#d56062'],
+            onChange: color => demo.style.setProperty('--ng-icons-colors', color),
+        });
+
+        // scroll behaviour is weird so we do this
+        let scrollTimeout, isOpen = false, clrPicker;
+        picker.addEventListener('open', () => isOpen = true);
+        picker.addEventListener('close', () => isOpen = false);
+
+        addEventListener('scroll', ()=>{
+            // we cancel the previous timeout as we are scrolling continuously
+            if(scrollTimeout){
+                clearTimeout(scrollTimeout);
+                scrollTimeout = null;
+            }
+            // no need to execute this if the picker is closed
+            if(isOpen){
+                clrPicker ??= document.getElementById('clr-picker');
+                // we hide the picker so it will not be displayed scrolling
+                clrPicker.classList.add('hidden');
+                scrollTimeout = setTimeout(() => {
+                    // we show the picker at the right position
+                    clrPicker.classList.remove('hidden');
+                    Coloris.updatePosition();
+                }, 150);
+            }
+        });
+
     </script>
 </body>
 </html><?php

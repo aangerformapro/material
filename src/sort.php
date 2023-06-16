@@ -5,7 +5,9 @@
 
 declare(strict_types=1);
 
-$dir = __DIR__ . '/svgs/';
+$dir    = __DIR__ . '/svgs/';
+
+$result = [];
 
 foreach (scandir($dir) as $file)
 {
@@ -14,7 +16,7 @@ foreach (scandir($dir) as $file)
         continue;
     }
 
-    $renamed = preg_replace('#(?:[\-_]FILL.+|[-_](?:black|white)[\-_]\d+dp)\.svg#', '.svg', $file);
+    $renamed  = preg_replace('#(?:[\-_]FILL.+|[-_](?:black|white)[\-_]\d+dp)\.svg#', '.svg', $file);
 
     if ($renamed !== $file)
     {
@@ -26,13 +28,18 @@ foreach (scandir($dir) as $file)
         $file = $renamed;
     }
 
-    $new     = ! str_starts_with($file, 'ng-') ? 'ng-' . $file : $file;
-    $new     = str_replace('_', '-', $new);
+    $new      = ! str_starts_with($file, 'ng-') ? 'ng-' . $file : $file;
+    $new      = str_replace('_', '-', $new);
 
     if ($new === $file)
     {
+        $result[] = $new;
         continue;
     }
 
-    rename($dir . $file, $dir . $new);
+    $result[] = @rename($dir . $file, $dir . $new) ? $new : $file;
 }
+
+sort($result);
+
+return $result;

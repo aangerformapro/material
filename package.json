@@ -1,7 +1,16 @@
 {
     "type": "module",
     "scripts": {
-        "build": "php ./generate.php",
-        "rename": "php ./sort.php"
+        "dev": "watch \"npm run build\" ./ -d -p /dist/ --wait=1",
+        "build": "run-s sprite:build rollup",
+        "rollup": "rollup -c",
+        "sprite:build": "php ./src/generate.php",
+        "svg:rename": "php ./src/sort.php"
+    },
+    "devDependencies": {
+        "@rollup/plugin-terser": "^0.4.3",
+        "npm-run-all": "^4.1.5",
+        "rollup": "^3.25.1",
+        "watch": "^1.0.2"
     }
 }
