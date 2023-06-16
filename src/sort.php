@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-$dir    = __DIR__ . '/svgs/';
+$dir    = getcwd() . '/svgs/';
 
 $result = [];
 

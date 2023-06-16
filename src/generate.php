@@ -32,10 +32,6 @@ function generateXLink($item, $class = 'ng-svg-icon')
 
 $svgs           = getcwd() . '/svgs/';
 $dist           = getcwd() . '/dist/';
-
-// $files          = scandir($svgs);
-// $files          = array_filter($files, fn ($f) => str_ends_with($f, '.svg'));
-
 $items          = $result = [];
 
 foreach (renameFiles() as $file)
@@ -227,10 +223,8 @@ const
     nodes = new Set(),
     watcher = (elem) =>
     {
-
         return () =>
         {
-
             for (let target of [...elem.querySelectorAll(selector)])
             {
 
@@ -272,7 +266,6 @@ export function watch(elem)
     observer.observe(elem, {
         attributes: true, childList: true, subtree: true
     });
-
     return () =>
     {
         observer.disconnect();
@@ -329,7 +322,6 @@ ob_start(); ?><!DOCTYPE html>
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
                 "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
                 "Droid Sans", "Helvetical Neue", sans-serif;
-
             background: #ddd;
             color: #333;
             padding-top: 300px;
@@ -583,19 +575,16 @@ ob_start(); ?><!DOCTYPE html>
     <footer>
         &copy; <span class="year">2023</span>  Aymeric Anger
     </footer>
-
     <script src="./sprite.umd.min.js"></script>
-
     <script>
-        const { watch } = ngsprite;
         const 
+            { watch } = ngsprite,
             year = (new Date()).getFullYear(), search = document.querySelector('#search'), 
             demo = document.querySelector('.demo'), 
             picker = document.querySelector('#color');
         document.querySelectorAll('.year').forEach(el=>el.innerHTML= year);
         // disconnects the observer when all symbols are loaded
         watch()();
-
         let targets;
         function findIcon(e){
             targets ??= [...document.querySelectorAll('.icon-card')];
@@ -609,7 +598,6 @@ ob_start(); ?><!DOCTYPE html>
                 scrollTo(0,0);
             });
         }
-
         // @link https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
         function selectText(node) {
             if (document.body.createTextRange) {
@@ -625,20 +613,16 @@ ob_start(); ?><!DOCTYPE html>
                 console.warn("Could not select text in node: Unsupported browser.");
             }
         }
-
         search.value = '';
         search.addEventListener('input', findIcon);
         search.addEventListener('change', findIcon);
         search.focus();
-
         addEventListener('click', e=>{
             let target;
             if(target = e.target.closest('.icon-card')){
                 selectText(target.querySelector('.icon-name'));
             }
         });
-
-        
         Coloris.setInstance('.instance1', {
             theme: 'pill', themeMode: 'dark', defaultColor: '#333333',
             formatToggle: true, closeButton: true, clearButton: true,
@@ -676,5 +660,4 @@ ob_start(); ?><!DOCTYPE html>
 
 $contents       = ob_get_clean();
 echo "Creating: {$outdir}/sprite.html\n";
-
 file_put_contents($dist . 'sprite.html', $contents);

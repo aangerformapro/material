@@ -4,7 +4,6 @@ import terser from "@rollup/plugin-terser";
 const
     input = 'dist/sprite.mjs',
     output = 'dist/sprite.umd.js',
-    outputMin = 'dist/sprite.umd.min.js',
     config = [];
 
 if (existsSync(input))
@@ -30,7 +29,7 @@ if (existsSync(input))
                 {
                     format: 'umd',
                     sourcemap: false,
-                    file: outputMin,
+                    file: output.replace(/\.js$/, '.min.js'),
                     name: 'ngsprite',
                     exports: 'named',
                 }

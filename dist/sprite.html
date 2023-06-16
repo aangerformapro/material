@@ -821,15 +821,14 @@
     <script src="./sprite.umd.min.js"></script>
 
     <script>
-        const { watch } = ngsprite;
         const 
+            { watch } = ngsprite,
             year = (new Date()).getFullYear(), search = document.querySelector('#search'), 
             demo = document.querySelector('.demo'), 
             picker = document.querySelector('#color');
         document.querySelectorAll('.year').forEach(el=>el.innerHTML= year);
         // disconnects the observer when all symbols are loaded
         watch()();
-
         let targets;
         function findIcon(e){
             targets ??= [...document.querySelectorAll('.icon-card')];
@@ -843,7 +842,6 @@
                 scrollTo(0,0);
             });
         }
-
         // @link https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
         function selectText(node) {
             if (document.body.createTextRange) {
@@ -859,20 +857,16 @@
                 console.warn("Could not select text in node: Unsupported browser.");
             }
         }
-
         search.value = '';
         search.addEventListener('input', findIcon);
         search.addEventListener('change', findIcon);
         search.focus();
-
         addEventListener('click', e=>{
             let target;
             if(target = e.target.closest('.icon-card')){
                 selectText(target.querySelector('.icon-name'));
             }
         });
-
-        
         Coloris.setInstance('.instance1', {
             theme: 'pill', themeMode: 'dark', defaultColor: '#333333',
             formatToggle: true, closeButton: true, clearButton: true,
