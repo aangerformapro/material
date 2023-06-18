@@ -96,6 +96,12 @@ class Xlink
         }
     }
 
+    generate(size, color)
+    {
+        loadSprite(this.id);
+        return generateSVG(this.template, size, color);
+    }
+
     constructor(id)
     {
         this._id = id;
