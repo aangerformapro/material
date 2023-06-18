@@ -140,24 +140,21 @@ class Xlink
     {
         if (isElement(parent))
         {
-            loadSprite(this.id);
-            parent.appendChild(generateSVG(this.template, size, color));
+            parent.appendChild(this.generate(size, color));
         }
     }
     prependTo(parent, size, color)
     {
         if (isElement(parent))
         {
-            loadSprite(this.id);
-            parent.insertBefore(generateSVG(this.template, size, color), parent.firstElementChild);
+            parent.insertBefore(this.generate(size, color), parent.firstElementChild);
         }
     }
     insertBefore(sibling, size, color)
     {
         if (isElement(sibling))
         {
-            loadSprite(this.id);
-            sibling.parentElement?.insertBefore(generateSVG(this.template, size, color), sibling);
+            sibling.parentElement?.insertBefore(this.generate(size, color), sibling);
         }
     }
 
