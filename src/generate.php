@@ -258,6 +258,8 @@ const
 
 
 
+
+
 export function watch(elem)
 {
     elem ??= document.body;
@@ -274,6 +276,9 @@ export function watch(elem)
         observer.disconnect();
     };
 }
+
+
+export const unwatch = watch();
 
 <?php
 
