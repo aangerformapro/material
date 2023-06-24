@@ -27,6 +27,20 @@ if (existsSync(input))
             input,
             output: [
                 {
+                    format: 'cjs',
+                    sourcemap: false,
+                    file: output.replace(/\.umd\.js$/, '.cjs'),
+                    name: 'ngsprite',
+                    exports: 'named',
+                }
+            ],
+            context: 'globalThis',
+            plugins: [],
+        },
+        {
+            input,
+            output: [
+                {
                     format: 'umd',
                     sourcemap: false,
                     file: output.replace(/\.js$/, '.min.js'),
